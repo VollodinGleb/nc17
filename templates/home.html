@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <h1 class="advertise-heading">Шоу-программа</h1>
+    <h1 class="advertise-heading">Яркая шоу-программа от балета NC-17 !</h1>
+    <div class="container">
+        {# SECTION INITIAL #}
+        <div class="row margin-bottom-mixin">
+            <div class="col s12 m6 l6 valign-wrapper home-section">
+                <div class="row valign center-align">
+                    <h3>{% trans initial_section.heading %}</h3>
+                    {% if initial_section.text %}
+                        {% autoescape off %}
+                            {% if initial_section.text %}
+                                <p>{% trans initial_section.text %}</p>
+                            {% endif %}
+                        {% endautoescape %}
+                    {% endif %}
+                    <a id="find-out-more-trigger"
+                       class="waves-effect waves-light btn-flat btn-large promotion home-buttons">
+                        <i class="material-icons left reversed-icon">navigation</i>
+                        {% trans initial_section.button_text %}
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m6 l6 valign-wrapper home-section valign-wrapper">
+                {% for video in initial_section.sectionvideo_set.all %}
+                    <div class='initial-video center-align' id="initial-video-{{ video.id }}">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-red accent-4">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {# SECTION ABOUT #}
+        <div class="row margin-bottom-mixin" id="find-out-more-point">
+            <div class="col s12 home-section center-align valign-wrapper">
+                <div class="valign">
+                    <h3>{% trans about_section.heading %}</h3>
+                    {% if about_section.text %}
+                        {% autoescape off %}
+                            <p>{{ about_section.text }}</p>
+                        {% endautoescape %}
+                    {% endif %}
+                    <br>
+                    <a class="waves-effect waves-light btn-flat btn-large promotion home-buttons"
+                       href={% url 'content:about' %}>
+                        {% trans about_section.button_text %}
+                        <i class="material-icons left right-icon">navigation</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {# SECTION Trainers #}
+        <div class="row margin-bottom-mixin">
+            <div class="col s12 home-section margin-bottom-mixin">
+            <div class="center-align"><h3>{{ anya_section.heading }}</h3></div>
+                <div class="col s12 m6 l6 center-align valign-wrapper">
+                    <div class="col s12 valign">
+                        {% if anya_section.text %}
+                            {% autoescape off %}
+                                <p>{{ anya_section.text }}</p>
+                            {% endautoescape %}
+                        {% endif %}
+                        <br>
+                        <a class="waves-effect waves-light btn-flat btn-large promotion home-buttons"
+                           href="http://twist-dance.com.ua/teacher2.php">
+                            {% trans anya_section.button_text %}
+                            <i class="material-icons left right-icon">navigation</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s12 m6 l6 center-align valign-wrapper">
+                    <div class="col s12 valign">
+                        {% for photo in anya_section.sectionimage_set.all %}
+                            <img class="profile-photo" src="{{ photo.image.profile.url }}" alt={{ photo.name }}>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 home-section">
+                <div class="col s12 m6 l6 center-align valign-wrapper">
+                    <div class="col s12 valign">
+                        {% if katya_section.text %}
+                            {% autoescape off %}
+                                <p>{{ katya_section.text }}</p>
+                            {% endautoescape %}
+                        {% endif %}
+                        <br>
+                        <a class="waves-effect waves-light btn-flat btn-large promotion home-buttons"
+                           href="http://twist-dance.com.ua/teacher1.php">
+                            {% trans katya_section.button_text %}
+                            <i class="material-icons left right-icon">navigation</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s12 m6 l6 center-align valign-wrapper">
+                    <div class="col s12 valign">
+                        {% for photo in katya_section.sectionimage_set.all %}
+                            <img class="profile-photo" src="{{ photo.image.profile.url }}" alt={{ photo.name }}>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# SECTION PHOTOS #}
+        <div class="row margin-bottom-mixin">
+            <div class="col s12 m12 l6 center-align slider-margin-top">
+                <h3>{% trans photos_section.heading %}</h3>
+                {% if photos_section.text %}
+                    {% autoescape off %}
+                        {{ photos_section.text }}
+                    {% endautoescape %}
+                {% endif %}
+                <br>
+                <a class="waves-effect waves-light btn-flat btn-large promotion home-buttons"
+                   href={% url 'content:photos' %}>
+                    {% trans photos_section.button_text %}
+                    <i class="material-icons left right-icon">navigation</i>
+                </a>
+            </div>
+            <div class="col s12 m12 l6 valign">
+                <div class="carousel photos-carousel">
+                    {% for photo in photos_section.sectionimage_set.all %}
+                        <a class="carousel-item">
+                            <img src="{{ photo.image.carousel.url }}" alt={{ photo.name }}>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {# SECTION VIDEOS#}
+        <div class="row">
+            <div class="col s12 m12 l6 center-align slider-margin-top">
+                <div class="col s12">
+                    <h3>{% trans videos_section.heading %}</h3>
+                    {% if videos_section.text %}
+                        {% autoescape off %}
+                            {{ videos_section.text }}
+                        {% endautoescape %}
+                    {% endif %}
+                    <br>
+                    <a class="waves-effect waves-light btn-flat btn-large promotion home-buttons"
+                       href={% url 'content:videos' %}>
+                        {% trans videos_section.button_text %}
+                        <i class="material-icons left right-icon">navigation</i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m12 l6 center-align">
+                <div class="row valign">
+                    <div class="carousel valign video-carousel">
+                        {% for video in videos_section.sectionvideo_set.all %}
+                            <a class="carousel-item">
+                                <div class="video-carousel-item" id="videos-video-{{ video.id }}">
+                                    <div class="preloader-wrapper big active">
+                                        <div class="spinner-layer spinner-red">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row video-controls valign">
+                    <div class="col s6 right-align">
+                        <a class="waves-effect waves-light btn red accent-4" data-trigger="prev">
+                            <i class="material-icons left">skip_previous</i>
+                            {% trans "Prev" %}
+                        </a>
+                    </div>
+                    <div class="col s6 left-align">
+                        <a class="waves-effect waves-light btn red accent-4" data-trigger="next">
+                            <i class="material-icons left">skip_next</i>
+                            {% trans "Next" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# SECTION CONTACTS #}
+        <div class="row">
+            <div class="col s12 center-align">
+                <h3>{% trans contacts_section.heading %}</h3>
+                {% if contacts_section.text %}
+                    {% autoescape off %}
+                        {{ contacts_section.text }}
+                    {% endautoescape %}
+                {% endif %}
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <form id='contact-form' class="col s12 push-m3 m6 push-l3 l6 contacts-block" action="." method="POST">
+                {% csrf_token %}
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    {{ form.name|add_class:'validate' }}
+                    <label for="name">{% trans "Name" %}</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    {{ form.email|add_class:'validate'  }}
+                    <label for="email">{% trans "Email" %}</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    {{ form.phone_number|add_class:'validate'  }}
+                    <label for="phone_number">{% trans "Phone Number" %}</label>
+                </div>
+                <div class="col s12 input-field">
+                    <i class="material-icons prefix">message</i>
+                    {{ form.text|add_class:'validate' }}
+                    <label for="text">{% trans "Message" %}</label>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button class="btn red accent-4 waves-effect waves-light" type="submit" name="action">
+                            {% trans "Submit" %}
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script src={% static 'js/autogrow.min.js' %}></script>
+    <script>
+        $(document).ready(function(){
+            $('div.carousel').carousel();
+
+            $('a[data-trigger="next"]').click(function(){
+                $('.video-carousel').carousel('next');
+            });
+            $('a[data-trigger="prev"]').click(function(){
+                $('.video-carousel').carousel('prev');
+            });
+            $("a#find-out-more-trigger").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#find-out-more-point").offset().top
+                }, 1000);
+            });
+
+            Materialize.updateTextFields();
+            var textarea = $('textarea');
+            textarea.autogrow({horizontal: false, vertical: true});
+            $('label[for="text"]').click(function(){
+                textarea.trigger('focus');
+            });
+
+            var get_form_vals = function(){
+                var inputs = $('input').add('textarea');
+                var return_obj = {};
+                inputs.each(function () {
+                    return_obj[$(this).attr('name')] = $(this).val();
+                });
+                return return_obj
+            };
+            $('form#contact-form').submit(function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: window.location.href,
+                    data: get_form_vals(),
+                    success: function(){
+                        $('form').hide();
+                        $('div.success-form').show();
+                    },
+                    error: function(response) {
+                        var data = JSON.parse(response.responseText);
+                        for (var field in data) {
+                            var label = $('input[name="' + field + '"]');
+                            label.removeClass('valid');
+                            $('[for="' + field + '"]').attr('data-error', data[field].join());
+                            label.addClass('invalid');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        function onYouTubeIframeAPIReady() {
+            {% for video in initial_section.sectionvideo_set.all %}
+                var player_initial_{{ video.id }} = new YT.Player('initial-video-{{ video.id }}', {
+                    videoId: '{{ video.youtube_video_id }}'
+                });
+            {% endfor %}
+            {% for video in videos_section.sectionvideo_set.all %}
+                var player_videos_{{ video.id }} = new YT.Player('videos-video-{{ video.id }}', {
+                    videoId: '{{ video.youtube_video_id }}'
+                });
+            {% endfor %}
+        }
+    </script>
+{% endblock %}

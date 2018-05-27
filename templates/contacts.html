@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 push-m3 m6 push-l3 l6 contacts-block">
+                <h1 style="text-align: center;">{% trans "Booking" %}</h1>
+                <div class="col s6">
+{#                  <p>+380502226580</p>#}
+                    <p>+380501893379</p>
+                    <p>NC17showballet@gmail.com</p>
+                    <br>
+                </div>
+                <div class="col s6">
+                    <a href="mailto:nc17showballet@gmail.com"><img class="social-icon" src={% static 'img/mail.png' %}></a>
+                    <a href="https://www.facebook.com/nc17showballet"><img class="social-icon" src={% static 'img/facebook.png' %}></a>
+                    <a href="https://instagram.com/nc17showballet/"><img class="social-icon" src={% static 'img/instagram.png' %}></a>
+                    <a href="http://vk.com/club41003248"><img class="social-icon" src={% static 'img/vk.png' %}></a>
+                    <a href="https://www.youtube.com/channel/UCFv1rS1K1I7ZNkJPszL9eFg/videos"><img class="social-icon" src={% static 'img/youtube.png' %}></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 push-m3 m6 push-l3 l6 success-form"><h3>{% trans "We'll contact you shortly!" %}</h3></div>
+        </div>
+        <div class="row">
+            <form id='contact-form' class="col s12 push-m3 m6 push-l3 l6 contacts-block" action="." method="POST">
+                {% csrf_token %}
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    {{ form.name|add_class:'validate' }}
+                    <label for="name">{% trans "Name" %}</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    {{ form.email|add_class:'validate'  }}
+                    <label for="email">{% trans "Email" %}</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    {{ form.phone_number|add_class:'validate'  }}
+                    <label for="phone_number">{% trans "Phone Number" %}</label>
+                </div>
+                <div class="col s12 input-field">
+                    <i class="material-icons prefix">message</i>
+                    {{ form.text|add_class:'validate' }}
+                    <label for="text">{% trans "Message" %}</label>
+                </div>
+                <div class="row">
+                    <div class="col s-6 push-s3">
+                        <button class="btn red accent-4 waves-effect waves-light" type="submit" name="action">
+                            {% trans "Submit" %}
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block additional_scripts %}
+<script src={% static 'js/autogrow.min.js' %}></script>
+<script>
+    $(document).ready(function() {
+        Materialize.updateTextFields();
+    });
+
+    var textarea = $('textarea');
+    textarea.autogrow({horizontal: false, vertical: true});
+    $('label[for="text"]').click(function(){
+        textarea.trigger('focus');
+    });
+
+    var get_form_vals = function(){
+        var inputs = $('input').add('textarea');
+        var return_obj = {};
+        inputs.each(function () {
+            return_obj[$(this).attr('name')] = $(this).val();
+        });
+        return return_obj
+    };
+    $('form#contact-form').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: window.location.href,
+            data: get_form_vals(),
+            success: function(){
+                $('form').hide();
+                $('div.success-form').show();
+            },
+            error: function(response) {
+                var data = JSON.parse(response.responseText);
+                for (var field in data) {
+                    var label = $('input[name="' + field + '"]');
+                    label.removeClass('valid');
+                    $('[for="' + field + '"]').attr('data-error', data[field].join());
+                    label.addClass('invalid');
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

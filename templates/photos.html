@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% load check_type %}
+
+
+{% block content %}
+    <div id="grid" data-columns>
+    {% for obj in object_list %}
+        {% if obj|obj_type == 'Photo' %}
+            <img class="materialboxed gallery-image" data-caption={{ obj.description }}
+                 width="100%" src={{ obj.image.gallery.url }}>
+        {% else %}
+            <div class="video-container">
+                <iframe width="100%" src="{{ obj.link }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block additional_scripts %}
+<script src={% static 'js/salvatore.min.js' %}></script>
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+    });
+</script>
+{% endblock %}

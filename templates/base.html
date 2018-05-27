@@ -1,0 +1,137 @@
+{% load static %}
+{% load i18n %}
+{% load thumbnail %}
+{% load lang_change %}
+
+<!doctype html>
+<html lang={{ LANG }}>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {% if home_section or photos_section or videos_section or initial_section or about_section %}
+        <meta name="description" content={% trans "Landing page description" %}>
+        <meta name="keywords" content={% trans "Landing page keywords" %}>
+        <title>{% trans "Landing page title" %}</title>
+    {% else %}
+        <meta name="description" content="NC-17 ShowBallet corporate website and booking">
+        <meta name="keywords" content="NC-17 Show ShowBallet Show-Ballet booking Show-Program">
+        <title>NC-17 ShowBallet</title>
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href={% static 'css/custom.css' %}>
+    <link rel="stylesheet" href={% static 'css/salvatore.css' %}>
+</head>
+<body>
+
+<header>
+    <div id="background-div">
+        {% with image='media/img/main-background.jpg'|thumbnailer %}
+            <img src={{ image.background_image.url }}>
+        {% endwith %}
+    </div>
+
+    {#BEGIN DROPDOWNS FOR NAV#}
+    <ul id="dropdown1" class="dropdown-content black">
+        <li><a hreflang="en" href="{% change_lang 'en' %}" class="waves-effect" data-lang="en">
+            <img class='language-select-icon' src={% static 'img/eng.jpg' %}>
+        </a></li>
+        <li><a hreflang="ru" href="{% change_lang 'ru' %}" class="waves-effect" data-lang="ru">
+            <img class='language-select-icon' src={% static 'img/ru.jpg' %}>
+        </a></li>
+        <li><a hreflang="uk" href="{% change_lang 'uk' %}" class="waves-effect" data-lang="uk">
+            <img class='language-select-icon' src={% static 'img/ua.jpg' %}>
+        </a></li>
+    </ul>
+    <ul id="dropdown2" class="dropdown-content black">
+        <li><a hreflang="en" href="{% change_lang 'en' %}" class="waves-effect" data-lang="en">
+            <img class='language-select-icon' src={% static 'img/eng.jpg' %}>
+        </a></li>
+        <li><a hreflang="en" href="{% change_lang 'en' %}" class="waves-effect" data-lang="ru">
+            <img class='language-select-icon' src={% static 'img/ru.jpg' %}>
+        </a></li>
+        <li><a hreflang="en" href="{% change_lang 'en' %}" class="waves-effect" data-lang="uk">
+            <img class='language-select-icon' src={% static 'img/ua.jpg' %}>
+        </a></li>
+    </ul>
+    {#END DROPDOWNS FOR NAV#}
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{% url 'content:home' %}" class="brand-logo">NC-17 ShowBallet</a>
+            <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'content:about' %}" class="waves-effect">{% trans "About" %}</a></li>
+                <li><a href="{% url 'content:photos' %}" class="waves-effect">{% trans "Photos" %}</a></li>
+                <li><a href="{% url 'content:videos' %}" class="waves-effect">{% trans "Videos" %}</a></li>
+                <li><a href="{% url 'content:contacts' %}" class="waves-effect">{% trans "Contacts" %}</a></li>
+                <li><a class="dropdown-button waves-effect" data-activates="dropdown1">{% trans "Language" %}<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="https://instagram.com/nc17showballet/" class="waves-effect fold">{% trans "Backstage" %}</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="{% url 'content:about' %}" class="waves-effect">{% trans "About" %}</a></li>
+                <li><a href="{% url 'content:photos' %}" class="waves-effect">{% trans "Photos" %}</a></li>
+                <li><a href="{% url 'content:videos' %}" class="waves-effect">{% trans "Videos" %}</a></li>
+                <li><a href="{% url 'content:contacts' %}" class="waves-effect">{% trans "Contacts" %}</a></li>
+                <li><a class="dropdown-button waves-effect" data-activates="dropdown2">{% trans "Language" %}<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="https://instagram.com/nc17showballet/" class="waves-effect fold">{% trans "Backstage" %}</a></li>
+
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+{% block content %}
+{% endblock %}
+</main>
+
+<footer class="page-footer">
+        <div class="row">
+            <div class="col s12 footer-contacts">
+                <div class="col s12 m6 l5 center-align">
+                    <a href="mailto:nc17showballet@gmail.com"><img class="social-icon" src={% static 'img/mail.png' %}></a>
+                    <a href="https://www.facebook.com/nc17showballet"><img class="social-icon" src={% static 'img/facebook.png' %}></a>
+                    <a href="https://instagram.com/nc17showballet/"><img class="social-icon" src={% static 'img/instagram.png' %}></a>
+                    <a href="http://vk.com/club41003248"><img class="social-icon" src={% static 'img/vk.png' %}></a>
+                    <a href="https://www.youtube.com/channel/UCFv1rS1K1I7ZNkJPszL9eFg/videos"><img class="social-icon" src={% static 'img/youtube.png' %}></a>
+                </div>
+                <div class="col s12 m6 l5 push-l2 center-align">
+{#                  <p>+380502226580</p>#}
+                    <p>+380501893379</p>
+                    <p>NC17showballet@gmail.com</p>
+                </div>
+            </div>
+{#            <div class="col s12 promotion-container">#}
+{#                <h5 class="white-text">{% trans "We also do:" %}</h5>#}
+{#                {% for prom in promotions %}#}
+{#                    <a class="waves-effect waves-red btn-flat promotion" href={% url 'content:promotions' slug=prom.slug %}>{{ prom.name }}</a></li>#}
+{#                {% endfor %}#}
+{#            </div>#}
+        </div>
+        <div class="footer-copyright">
+                {% trans "© 2016 NC-17 ShowBallet. Developed by Oleksander Mashianov" %}
+        </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script>
+    $(".button-collapse").sideNav();
+</script>
+<script src={% static 'js/custom.js' %}></script>
+{% block additional_scripts %}
+{% endblock %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82446680-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

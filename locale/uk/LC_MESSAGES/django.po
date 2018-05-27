@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-15 06:12+0000\n"
+"PO-Revision-Date: 2016-11-19 13:36+0000\n"
+"Last-Translator: b'  <mashianov@gmail.com>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Translated-Using: django-rosetta 0.7.12\n"
+
+#: content/urls.py:6
+msgid "^$"
+msgstr "^show-programma$"
+
+#: content/urls.py:7
+#| msgid "About"
+msgid "about/$"
+msgstr "show-ballet/$"
+
+#: nc17_backend/settings.py:153
+msgid "English"
+msgstr "English"
+
+#: nc17_backend/settings.py:154
+msgid "Russian"
+msgstr "Русский"
+
+#: nc17_backend/settings.py:155
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: templates/base.html:12
+#| msgid "Landing page title"
+msgid "Landing page description"
+msgstr ""
+"Танцевальная Шоу Программа Заказать Танцевальный Шоу Балет Танцевальные шоу "
+"номера, Украина!"
+
+#: templates/base.html:13
+#| msgid "Landing page title"
+msgid "Landing page keywords"
+msgstr ""
+"шоу программа  шоу номера танцевальное шоу танцевальный шоу балет "
+"танцевальные шоу программы танцевальные шоу номера заказать танцевальное шоу"
+
+#: templates/base.html:14
+msgid "Landing page title"
+msgstr "шоу-программа"
+
+#: templates/base.html:58 templates/base.html:66
+msgid "About"
+msgstr "Шоу-балет"
+
+#: templates/base.html:59 templates/base.html:67
+msgid "Photos"
+msgstr "Фото"
+
+#: templates/base.html:60 templates/base.html:68
+msgid "Videos"
+msgstr "Відео"
+
+#: templates/base.html:61 templates/base.html:69
+msgid "Contacts"
+msgstr "Контакти"
+
+#: templates/base.html:62 templates/base.html:70
+msgid "Language"
+msgstr "Мова"
+
+#: templates/base.html:63 templates/base.html:71
+msgid "Backstage"
+msgstr "Поза сценою"
+
+#: templates/base.html:107
+msgid ""
+"© 2016 NC-17 ShowBallet. Developed by Oleksander Mashianov at BuddhaSoft."
+msgstr ""
+"© 2016 Шоу Балет NC-17. Розроблено Маш’яновим Олександром з компанії "
+"BuddhaSoft."
+
+#: templates/contacts.html:10
+msgid "Booking"
+msgstr "Замовити"
+
+#: templates/contacts.html:27
+msgid "We'll contact you shortly!"
+msgstr "Ми скоро з вами зв’яжемося"
+
+#: templates/contacts.html:35 templates/home.html:210
+msgid "Name"
+msgstr "Ім’я"
+
+#: templates/contacts.html:40 templates/home.html:215
+msgid "Email"
+msgstr "Пошта"
+
+#: templates/contacts.html:45 templates/home.html:220
+msgid "Phone Number"
+msgstr "Номер телефону"
+
+#: templates/contacts.html:50 templates/home.html:225
+msgid "Message"
+msgstr "Повідомлення"
+
+#: templates/contacts.html:55 templates/home.html:230
+msgid "Submit"
+msgstr "Відправити"
+
+#: templates/home.html:183
+msgid "Prev"
+msgstr "Попереднє"
+
+#: templates/home.html:189
+msgid "Next"
+msgstr "Наступне"
+
+#~ msgid "Who we are"
+#~ msgstr "Хто ми..."
+
+#~ msgid "Check it out"
+#~ msgstr "Перевірте!"
+
+#~ msgid "Just take a look"
+#~ msgstr "Тільки гляньте!"
+
+#~ msgid "Check out gallery"
+#~ msgstr "Переглянути гелерею"
+
+#~ msgid "Watch this!"
+#~ msgstr "Диви!"
+
+#~ msgid "Check out others"
+#~ msgstr "Дивитися інші"
+
+#~ msgid "Contact us!"
+#~ msgstr "Зв’язатись з нами!"
+
+#~ msgid "Enjoy best dance shows with prettiest girls!"
+#~ msgstr "Насолоджуйся кращими шоу з найчарівнішими дівчатами"
+
+#~ msgid "Find out more"
+#~ msgstr "Дізнатися більше"
+
+#~ msgid "Get in touch now!"
+#~ msgstr "sdgasfhasds"

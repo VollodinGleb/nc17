@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block content %}
+    <div id="grid" data-columns>
+        {% for obj in object_list %}
+            <div class="video-container">
+                <iframe width="100%" src="{{ obj.link }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block additional_scripts %}
+<script src={% static 'js/salvatore.min.js' %}></script>
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+    });
+</script>
+{% endblock %}
