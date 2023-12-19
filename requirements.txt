@@ -1,12 +1,13 @@
-django
+django==4.2.3
 Pillow
 easy-thumbnails
 django-image-cropping
 django-ckeditor
+django-phonenumbers
 django-phonenumber-field
 django-widget-tweaks
 django-cleanup
-django-modeltranslation
+django-modeltranslation>=0.13b1
 django-rosetta
 django-admin-sortable
 python-memcached

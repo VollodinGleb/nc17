@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import re_path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from . import settings
@@ -23,20 +23,20 @@ from django.urls import resolve
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^i18n/', include('django.conf.urls.i18n')),
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root='static')
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 urlpatterns += i18n_patterns(
-    url(r'^', include('content.urls', namespace='content')),
-    url(r'^rosetta/', include('rosetta.urls')),
-
+    re_path(r'^', include('content.urls', namespace='content')),
+    re_path(r'^rosetta/', include('rosetta.urls')),
 )
+
 # include redirect patterns after all others are registered
 urlpatterns += [
-    url(r'^$', RedirectView.as_view(pattern_name='content:home', permanent=False))
+    re_path(r'^$', RedirectView.as_view(pattern_name='content:home', permanent=False))
 ]

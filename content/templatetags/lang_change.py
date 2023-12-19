@@ -1,5 +1,5 @@
 from django.template import Library
-from django.core.urlresolvers import resolve, reverse
+from django.urls import resolve, reverse
 from django.utils.translation import activate, get_language
 
 register = Library()
@@ -13,13 +13,13 @@ def change_lang(context, lang=None, *args, **kwargs):
     """
 
     path = context['request'].path
-    url_parts = resolve( path )
+    url_parts = resolve(path)
 
     url = path
     cur_language = get_language()
     try:
         activate(lang)
-        url = reverse( url_parts.view_name, kwargs=url_parts.kwargs )
+        url = reverse(url_parts.view_name, kwargs=url_parts.kwargs)
     finally:
         activate(cur_language)
 

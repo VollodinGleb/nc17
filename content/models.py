@@ -65,7 +65,7 @@ class About(models.Model):
 class SectionImage(models.Model):
     name = models.CharField(max_length=100, help_text='Название картинки для админки')
     image = ThumbnailerImageField()
-    section_text = models.ForeignKey('Section')
+    section_text = models.ForeignKey('Section', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -74,7 +74,7 @@ class SectionImage(models.Model):
 class SectionVideo(models.Model):
     name = models.CharField(max_length=100, help_text='Название вилео для админки')
     link = models.URLField(help_text='Ссылка на видео')
-    section_text = models.ForeignKey('Section')
+    section_text = models.ForeignKey('Section', on_delete=models.CASCADE)
     youtube_video_id = models.CharField(max_length=30, blank=True, null=True)
 
     def __str__(self):

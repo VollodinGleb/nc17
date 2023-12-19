@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,8 +24,17 @@ SECRET_KEY = 'bmxbex!h&gp)-i8f@zk_4(ipitp=^jmi9@3hj%i&%vatkd+74s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    '18.192.66.87',
+    '18.194.210.213',
+    'localhost',
+    'nc17showballet.com'
+]
 
 
 # Application definition
@@ -49,7 +58,7 @@ INSTALLED_APPS = [
     'rosetta'
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,12 +69,13 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
 ]
 
+
 ROOT_URLCONF = 'conf.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,9 +141,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

@@ -1,0 +1,257 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/*PAPER FOLD ANIMATION*/
+.fold{
+    position: relative;
+    text-decoration: none;
+    transition: all ease .5s;
+    overflow: hidden;
+    background: black;
+}
+.fold:hover {
+    background-color: black;
+}
+.fold:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent transparent red red;
+    transition: all ease .5s;
+    background-image: url('/static/img/lips-black.jpg');
+
+}
+.fold:hover:before {
+    border-width: 0 100px 100px 0;
+    border-color: transparent transparent red red;
+}
+
+/*END PAPERFOLD ANIMATIONS*/
+
+/*STICKY FOOTER*/
+footer  {
+    z-index: 0;
+    bottom: 0;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-bottom: 3px solid red;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 0 0 auto;
+    margin-top: -3px;
+}
+nav {
+    background-color: rgba(0,0,0,0.1) !important;
+}
+footer {
+    margin-top: 0 !important;
+    padding-top: 40px !important;
+    background-color: rgba(0,0,0,0.8) !important;
+}
+.footer-copyright {
+    text-align: center;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    min-height: 50px;
+    line-height: 20px !important;
+}
+.promotion-container {
+    text-align: center;
+}
+.promotion {
+    color: white;
+}
+.promotion:hover {
+    background-color: red;
+}
+.float-right {
+    float: right;
+}
+.footer-contacts {
+    font-weight: bolder;
+}
+/*END STICKY FOOTER*/
+
+
+/*BLACK BACKGROUNDS*/
+body {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+main {
+    background-color: rgba(0, 0, 0, 0.5)!important;
+    z-index: 0;
+    overflow: hidden;
+    width: 100vw !important;
+    min-width: 100vw;
+}
+.side-nav{
+    background-color: black;
+}
+.contacts-block, .text-block {
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    margin-top: 20px;
+    word-wrap: break-word;
+}
+.success-form {
+    /*background-color: rgba(52, 255, 52, 0.8);*/
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    display: none;
+}
+/*END BLACK BACKGROUNDS*/
+
+
+
+/*HOME SECTIONS*/
+.home-section {
+    min-height: 65vh;
+    width: 100%;
+}
+.margin-bottom-mixin {
+    margin-bottom: 200px;
+    margin-top: 100px;
+}
+.waves-effect.home-buttons {
+    border: 1px solid white;
+    color: white;
+}
+.carousel {
+    width: 100%;
+}
+.initialized {
+    overflow: visible;
+}
+@media only screen and (min-width: 801px) {
+    .photos-carousel .carousel-item {
+        width: 350px !important;
+    }
+    .video-carousel-item {
+        width: 400px !important;
+        height: 300px !important;
+        margin-top: -80px !important;
+    }
+}
+@media only screen and (max-width: 801px) {
+    .photos-carousel .carousel-item {
+        width: 200px !important;
+    }
+    .video-carousel-item {
+        width: 350px !important;
+        height: 280px !important;
+        margin-top: -80px !important;
+    }
+}
+
+.video-carousel {
+    height: 400px;
+}
+.video-controls {
+    margin-top: -50px !important;
+}
+.video-initial {
+    height: 65%;
+    width: 100%;
+}
+.profile-photo {
+    width: 100%;
+}
+.slider-margin-top {
+    margin-top: 10%!important;
+}
+/*END HOME SECTIONS*/
+
+
+
+
+.reversed-icon {
+    transform: rotate(180deg);
+}
+.right-icon {
+    transform: rotate(90deg);
+}
+
+.brand-logo {
+    font-size: 22px !important;
+}
+@media only screen and (min-width: 601px) {
+    .brand-logo {
+        margin-left: 20%;
+    }
+}
+
+.side-nav a {
+    color: white;
+}
+@media only screen and (min-width: 601px) {
+    nav {
+        height: 67px;
+    }
+}
+
+.nav-wrapper {
+    border-top: 3px solid red;
+    background-color: rgba(0,0,0,0.7) !important;
+}
+
+.nav-wrapper ul li:hover {
+    background-color: red;
+}
+.language-select-icon {
+    height: 25px;
+}
+.material-placeholder {
+    width: 100%;
+}
+#background-div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -999;
+}
+#background-div > img {
+    position: relative;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+label {
+    color: white !important;
+}
+textarea {
+    height: 50px;
+}
+.social-icon {
+    height: 40px;
+    display: inline-block;
+}
+.success-form > h3 {
+    padding: 15px;
+}
+
+/*ADVERTISE SPECIALS*/
+.advertise-heading {
+    position: absolute;
+    margin-top: -1000px;
+}
