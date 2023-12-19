@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
     '18.192.66.87',
     '18.194.210.213',
     'localhost',
+    'nc17.onrender.com',
     'nc17showballet.com'
 ]
 
